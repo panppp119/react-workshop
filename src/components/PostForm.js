@@ -15,6 +15,12 @@ const PostForm = (props) => {
     }
   }
 
+  const handleClick = () => {
+    const data = { title, body }
+
+    props.addPost(data)
+  }
+
   return (
     <div className='post-form'>
       <form>
@@ -28,7 +34,7 @@ const PostForm = (props) => {
           <input type='text' name='body' onChange={handleChangeInput} />
         </label>
 
-        <button>Add</button>
+        <button onClick={handleClick}>Add</button>
       </form>
     </div>
   )
