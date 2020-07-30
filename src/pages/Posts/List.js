@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-import PostForm from '../components/PostForm'
-import PostList from '../components/PostList'
-import { getPosts, createPost, deletePost } from '../actions/posts'
+import PostForm from '../../components/PostForm'
+import PostList from '../../components/PostList'
+import { getPosts, createPost, deletePost } from '../../actions/posts'
 
-function Posts() {
+function List() {
   const [posts, setPosts] = useState([])
 
   useEffect(() => {
@@ -23,7 +23,7 @@ function Posts() {
     }
   }
 
-  const addClick = async (data) => {
+  const addPost = async (data) => {
     try {
       const response = await createPost(data)
 
@@ -48,13 +48,21 @@ function Posts() {
   }
 
   return (
-    <div className='App' style={{ textAlign: 'center' }}>
+    <div
+      className='App'
+      style={{
+        textAlign: 'center',
+        width: '100%',
+        maxWidth: 400,
+        margin: 'auto',
+      }}
+    >
       <h1>Posts</h1>
 
-      <PostForm />
+      <PostForm addPost={addPost} />
       <PostList posts={posts} delPost={delPost} />
     </div>
   )
 }
 
-export default Posts
+export default List

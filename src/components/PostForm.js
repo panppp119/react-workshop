@@ -15,7 +15,9 @@ const PostForm = (props) => {
     }
   }
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.preventDefault()
+
     const data = { title, body }
 
     props.addPost(data)
